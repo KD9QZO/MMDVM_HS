@@ -1,3 +1,11 @@
+#
+# .gitignore
+#
+
+
+*~
+*.bak
+*.tmp
 
 *.o
 

@@ -16,26 +16,28 @@
  *   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#if !defined(M17DEFINES_H)
-#define  M17DEFINES_H
+#if !defined(M17DEFINES_H_)
+#define M17DEFINES_H_
+
+
 
 const unsigned int M17_RADIO_SYMBOL_LENGTH = 5U;      // At 24 kHz sample rate
 
-const unsigned int M17_FRAME_LENGTH_BITS    = 384U;
-const unsigned int M17_FRAME_LENGTH_BYTES   = M17_FRAME_LENGTH_BITS / 8U;
+const unsigned int M17_FRAME_LENGTH_BITS = 384U;
+const unsigned int M17_FRAME_LENGTH_BYTES = M17_FRAME_LENGTH_BITS / 8U;
 
-const unsigned int M17_SYNC_LENGTH_BITS    = 16U;
-const unsigned int M17_SYNC_LENGTH_BYTES   = M17_SYNC_LENGTH_BITS / 8U;
+const unsigned int M17_SYNC_LENGTH_BITS = 16U;
+const unsigned int M17_SYNC_LENGTH_BYTES = M17_SYNC_LENGTH_BITS / 8U;
 
-const uint8_t M17_LINK_SETUP_SYNC_BYTES[] = {0x55U, 0xF7U};
-const uint8_t M17_STREAM_SYNC_BYTES[]     = {0xFFU, 0x5DU};
-const uint8_t M17_EOT_SYNC_BYTES[]        = {0x55U, 0x5DU};
+const uint8_t M17_LINK_SETUP_SYNC_BYTES[] = { 0x55U, 0xF7U };
+const uint8_t M17_STREAM_SYNC_BYTES[] = { 0xFFU, 0x5DU };
+const uint8_t M17_EOT_SYNC_BYTES[] = { 0x55U, 0x5DU };
 
 const uint8_t M17_SYNC_BYTES_LENGTH = 2U;
 
 const uint16_t M17_LINK_SETUP_SYNC_BITS = 0x55F7U;
-const uint16_t M17_STREAM_SYNC_BITS     = 0xFF5DU;
-const uint16_t M17_EOT_SYNC_BITS        = 0x555DU;
+const uint16_t M17_STREAM_SYNC_BITS = 0xFF5DU;
+const uint16_t M17_EOT_SYNC_BITS = 0x555DU;
 
-#endif
 
+#endif	/* !M17DEFINES_H_ */

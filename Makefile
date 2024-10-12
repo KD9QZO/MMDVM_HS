@@ -16,22 +16,22 @@
 #  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 # MMDVM source files
-MMDVM_HS_PATH=.
+MMDVM_HS_PATH = .
 
 # STM32 library paths
-F1_LIB_PATH=./STM32F10X_Lib
-F4_LIB_PATH=./STM32F4XX_Lib
-F7_LIB_PATH=./STM32F7XX_Lib
+F1_LIB_PATH = ./STM32F10X_Lib
+F4_LIB_PATH = ./STM32F4XX_Lib
+F7_LIB_PATH = ./STM32F7XX_Lib
 
 # MCU external clock frequency (Hz)
-CLK_PI_F4=12000000
-CLK_DEF=8000000
+CLK_PI_F4 = 12000000
+CLK_DEF   = 8000000
 
 # Directory Structure
-BINDIR=bin
-OBJDIR_F1=obj_f1
-OBJDIR_F4=obj_f4
-OBJDIR_F7=obj_f7
+BINDIR    = bin
+OBJDIR_F1 = obj_f1
+OBJDIR_F4 = obj_f4
+OBJDIR_F7 = obj_f7
 
 # Output files
 BINELF_F1=mmdvm_f1.elf
@@ -51,20 +51,20 @@ BINHEX_F7=mmdvm_f7.hex
 BINBIN_F7=mmdvm_f7.bin
 
 # Header directories
-INC_F1= . $(F1_LIB_PATH)/CMSIS/ $(F1_LIB_PATH)/Device/ $(F1_LIB_PATH)/STM32F10x_StdPeriph_Driver/inc/ $(F1_LIB_PATH)/usb/inc/
-INCLUDES_F1=$(INC_F1:%=-I%)
-INC_F4= . $(F4_LIB_PATH)/CMSIS/Include/ $(F4_LIB_PATH)/Device/ $(F4_LIB_PATH)/STM32F4xx_StdPeriph_Driver/include/
-INCLUDES_F4=$(INC_F4:%=-I%)
-INC_F7= . $(F7_LIB_PATH)/CMSIS/Include/ $(F7_LIB_PATH)/Device/ $(F7_LIB_PATH)/STM32F7xx_StdPeriph_Driver/inc/
-INCLUDES_F7=$(INC_F7:%=-I%)
+INC_F1 = . $(F1_LIB_PATH)/CMSIS/ $(F1_LIB_PATH)/Device/ $(F1_LIB_PATH)/STM32F10x_StdPeriph_Driver/inc/ $(F1_LIB_PATH)/usb/inc/
+INCLUDES_F1 = $(INC_F1:%=-I%)
+INC_F4 = . $(F4_LIB_PATH)/CMSIS/Include/ $(F4_LIB_PATH)/Device/ $(F4_LIB_PATH)/STM32F4xx_StdPeriph_Driver/include/
+INCLUDES_F4 = $(INC_F4:%=-I%)
+INC_F7 = . $(F7_LIB_PATH)/CMSIS/Include/ $(F7_LIB_PATH)/Device/ $(F7_LIB_PATH)/STM32F7xx_StdPeriph_Driver/inc/
+INCLUDES_F7 = $(INC_F7:%=-I%)
 
 # CMSIS libraries
-INCLUDES_LIBS_F1=
-INCLUDES_LIBS_F4=$(F4_LIB_PATH)/CMSIS/Lib/GCC/libarm_cortexM4lf_math.a
-INCLUDES_LIBS_F7=$(F7_LIB_PATH)/CMSIS/Lib/GCC/libarm_cortexM7lfsp_math.a
+INCLUDES_LIBS_F1 =
+INCLUDES_LIBS_F4 = $(F4_LIB_PATH)/CMSIS/Lib/GCC/libarm_cortexM4lf_math.a
+INCLUDES_LIBS_F7 = $(F7_LIB_PATH)/CMSIS/Lib/GCC/libarm_cortexM7lfsp_math.a
 
 # STM32F1 Standard Peripheral Libraries source path
-STD_LIB_F1=$(F1_LIB_PATH)/STM32F10x_StdPeriph_Driver/src
+STD_LIB_F1 = $(F1_LIB_PATH)/STM32F10x_StdPeriph_Driver/src
 
 # STM32F1 USB support source path
 USB_F1=$(F1_LIB_PATH)/usb
@@ -88,16 +88,18 @@ SYS_DIR_F7=$(F7_LIB_PATH)/Device
 STARTUP_DIR_F7=$(F7_LIB_PATH)/Device/startup
 
 # GNU ARM Embedded Toolchain
-CC=arm-none-eabi-gcc
-CXX=arm-none-eabi-g++
-LD=arm-none-eabi-ld
-AR=arm-none-eabi-ar
-AS=arm-none-eabi-as
-CP=arm-none-eabi-objcopy
-OD=arm-none-eabi-objdump
-NM=arm-none-eabi-nm
-SIZE=arm-none-eabi-size
-A2L=arm-none-eabi-addr2line
+CROSS := arm-none-eabi-
+
+CC   := $(CROSS)gcc
+CXX  := $(CROSS)g++
+LD   := $(CROSS)ld
+AR   := $(CROSS)ar
+AS   := $(CROSS)as
+CP   := arm-none-eabi-objcopy
+OD   := arm-none-eabi-objdump
+NM   := arm-none-eabi-nm
+SIZE := arm-none-eabi-size
+A2L  := arm-none-eabi-addr2line
 
 # Configure vars depending on OS
 ifeq ($(OS),Windows_NT)
@@ -142,9 +144,9 @@ else
 				ST_FLASH=$(ST_FLASH_ON_PATH)
 				ST_FLASH_OPTS=--flash=128k
 			else
-			  ST_FLASH=./$(F1_LIB_PATH)/utils/linux/st-flash
-				ST_FLASH_OPTS= 
-		  endif
+				ST_FLASH      = ./$(F1_LIB_PATH)/utils/linux/st-flash
+				ST_FLASH_OPTS =
+			endif
 			STM32FLASH=./$(F1_LIB_PATH)/utils/linux/stm32flash
 		endif
 	endif
@@ -160,9 +162,9 @@ endif
 # Default reference oscillator frequencies
 ifndef $(OSC)
 	ifeq ($(MAKECMDGOALS),pi-f4)
-		OSC=$(CLK_PI_F4)
+		OSC = $(CLK_PI_F4)
 	else
-		OSC=$(CLK_DEF)
+		OSC = $(CLK_DEF)
 	endif
 endif
 
